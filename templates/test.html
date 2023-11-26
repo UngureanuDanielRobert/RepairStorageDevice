@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<h1 class="title">
+  Welcome, {{name}}
+</h1>
+<ol>
+
+{% for i in range(0,len) %}
+    <li>{{listaFisiere[i]}}</li>
+{% endfor %}
+</ol>
+</body>
+
+{%endblock%}

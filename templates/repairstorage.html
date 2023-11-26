@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="tab.css">
+
+    <script src="schimba.js"></script>
+</head>
+<body>
+<h1 class="title">
+  Welcome, {{name}}
+</h1>
+    <h2>Upload new File</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="notification is-danger">
+            {{ message }}.
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <!-- Tab links -->
+        <div>
+          <button class="tablinks" onclick="schimba(event, 'uploadfile')">Incarca fisier</button>
+          <button class="tablinks" onclick="schimba(event, 'listafisiere')">Fisiere incarcate</button>
+        </div>
+        <div id="uploadfile" class="tabcontent">
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=file>
+              <input type=submit value=Upload>
+            </form>
+        </div>
+        <div id="listafisiere" class="tabcontent">
+            {% if fisiere %}
+            <ol>
+            {% for fisier in fisiere %}
+                <li> {{fisier}} </li>
+            {% endfor %}
+            </ol>
+            {% endif %}
+        </div>
+</body>
+
+
+{%endblock%}
